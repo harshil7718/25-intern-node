@@ -1,0 +1,10 @@
+const routes = require("express").Router()
+const userController= require('../controllers/UserController')
+routes.get("/users",userController.getUsers)
+// routes.post('/user',userController.addUser)
+routes.post('/user',userController.signup)
+routes.post('/user/login',userController.loginUser)
+routes.delete('/user/:id',userController.deleteUser)
+routes.get('/user/:id',userController.getUserById)
+routes.put('/user/:id',userController.updateUser)
+module.exports = routes
