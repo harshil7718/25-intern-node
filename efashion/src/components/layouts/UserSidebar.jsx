@@ -55,7 +55,7 @@ const UserSidebar = () => {
                     <a href="#" className="nav-link active">
                       <i className="nav-icon bi bi-speedometer" />
                       <p>
-                        Dashboard
+                        Add Product
                         <i className="nav-arrow bi bi-chevron-right" />
                       </p>
                     </a>

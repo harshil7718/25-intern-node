@@ -160,6 +160,34 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
+  // const onSubmit = async (data) => {
+  //   try {
+  //     // Prepare the login data to be sent to the backend
+  //     const loginData = {
+  //       email: data.email,
+  //       password: data.password,
+  //     };
+
+  //     const res = await axios.post("/user/login", loginData, {
+  //       headers: { "Content-Type": "application/json" },
+  //     });
+
+  //     console.log("Login Successful:", res.data);
+  //     alert("Login successful");
+  //     localStorage.setItem("id",res.data.data._id)
+  //     localStorage.setItem("role",res.data.data.roleId.name)
+  //     if(res.data.data.roleId.name === "user"){
+  //       navigate("/user") //check in app.js
+  //     }
+  //     if(res.data.data.roleId.name ==="user"){
+  //       navigate("/addproduct") //check in app.js
+  //     }
+  //     // navigate("/user"); // After successful login, redirect to the dashboard
+  //   } catch (error) {
+  //     console.error("Login error:", error.res?.data || error.message);
+  //     alert("Login failed! Please check your credentials.");
+  //   }
+  // };
   const onSubmit = async (data) => {
     try {
       // Prepare the login data to be sent to the backend
@@ -167,19 +195,31 @@ const Login = () => {
         email: data.email,
         password: data.password,
       };
-
+  
       const response = await axios.post("/user/login", loginData, {
         headers: { "Content-Type": "application/json" },
       });
-
+  
       console.log("Login Successful:", response.data);
       alert("Login successful");
-      navigate("/user"); // After successful login, redirect to the dashboard
+  
+      // Corrected response variable
+      localStorage.setItem("id", response.data.data._id);
+      localStorage.setItem("role", response.data.data.roleId.name);
+  
+      // Role-based navigation
+      if (response.data.data.roleId.name === "user") {
+        navigate("/user");
+      } if (response.data.data.roleId.name === "Admin") {
+        navigate("/addproduct");
+      }
+  
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
       alert("Login failed! Please check your credentials.");
     }
   };
+  
 
   return (
     <div className="login-container">

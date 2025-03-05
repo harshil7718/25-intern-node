@@ -298,7 +298,11 @@ const Signup = () => {
       owner: '67be91cab339a2cdaf793810',
       admin: '67c1ae46c5b4e3436f9d6601',
     };
-    data.roleId = roleMap[data.role]; // Assign the corresponding roleId to data
+    const selectedRoleId = roleMap[data.role]; 
+    if(!selectedRoleId){
+      alert("Invalid Role Select")
+      return
+    };// Assign the corresponding roleId to data
 
     try {
       // Creating a JSON object to send
@@ -307,7 +311,7 @@ const Signup = () => {
         email: data.email,
         password: data.password,
         phone: data.phone, // Uncomment if phone is required
-        roleId: data.roleId, // Assign the roleId from selected role
+        roleId: selectedRoleId, // Assign the roleId from selected role
       };
 
       const response = await axios.post("/user", userData, {

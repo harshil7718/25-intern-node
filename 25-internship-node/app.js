@@ -19,8 +19,17 @@ const userRoutes = require("./src/routes/UserRoutes");
 // const bodyParser = require("body-parser");
 app.use(userRoutes)
 
+const stateRoutes= require("./src/routes/StateRoutes")
+app.use(stateRoutes)
 
+const cityRoutes= require('./src/routes/CityRoutes')
+app.use(cityRoutes)
 
+const categoryRoutes=require('./src/routes/CategoryRoutes')
+app.use(categoryRoutes)
+
+const productRoutes=require('./src/routes/ProductRoutes')
+app.use(productRoutes)
 
 mongoose.connect("mongodb+srv://harshilp7718:SqNcKQASM4WQi1l9@cluster01.gsjaj.mongodb.net/xyz?retryWrites=true&w=majority&appName=Cluster01").then(()=>{
     console.log("database connected....")
