@@ -208,9 +208,9 @@ const Login = () => {
       localStorage.setItem("role", response.data.data.roleId.name);
   
       // Role-based navigation
-      if (response.data.data.roleId.name === "user") {
+      if (response.data.data.roleId.name === "Admin") {
         navigate("/user");
-      } if (response.data.data.roleId.name === "Admin") {
+      } if (response.data.data.roleId.name === "user") {
         navigate("/addproduct");
       }
   

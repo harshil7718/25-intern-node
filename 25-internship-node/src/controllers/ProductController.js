@@ -1,9 +1,23 @@
 const Product = require("../models/ProductModel");
 
 // ✅ Add a new product
+// const addProduct = async (req, res) => {
+//   try {
+//     const newProduct = await Product.create(req.body).populate("sellerId")
+//     res.status(201).json({
+//       message: "Product added successfully",
+//       data: newProduct,
+//     });
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// };
+
 const addProduct = async (req, res) => {
   try {
-    const newProduct = await Product.create(req.body);
+    let newProduct = await (await Product.create(req.body)).populate("sellerId categoryId cityId stateId")
+    // newProduct = await newProduct.populate("sellerId categoryId cityId stateId")
+
     res.status(201).json({
       message: "Product added successfully",
       data: newProduct,
@@ -12,6 +26,7 @@ const addProduct = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
 
 // ✅ Get all products
 const getProducts = async (req, res) => {

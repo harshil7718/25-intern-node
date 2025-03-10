@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Navbar from "./Navbar.jsx";
 // import "./css/adminlte.css";
 // import "./css/adminlte.min.css";
@@ -52,16 +52,16 @@ const UserSidebar = () => {
                   data-accordion="false"
                 >
                   <li className="nav-item menu-open">
-                    <a href="#" className="nav-link active">
+                    <Link to="/addproduct" className="nav-link active">
                       <i className="nav-icon bi bi-speedometer" />
                       <p>
                         Add Product
                         <i className="nav-arrow bi bi-chevron-right" />
                       </p>
-                    </a>
+                    </Link>
                     <ul className="nav nav-treeview">
                       <li className="nav-item">
-                        <a className="nav-link active" href="/dist/pages/">
+                        <a className="nav-link" href="/dist/pages/">
                           <i className="nav-icon bi bi-circle" />
                           <p>Dashboard v1</p>
                         </a>

@@ -15,6 +15,7 @@ import axios from "axios";
 import Home from "./components/common/Home.jsx";
 import ProductForm from "./components/common/AddProduct.jsx";
 import AddProduct from "./components/common/AddProduct.jsx";
+import PrivateRoutes from "./hooks/PrivateRoutes.jsx";
 // import AddItem from "./components/layouts/AddItem.jsx";
 
 
@@ -31,10 +32,12 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route path=""  element={<PrivateRoutes/>}>
+        </Route>
+        <Route path="/addproduct" element={<AddProduct/>}></Route>
         <Route path="/nav" element={<Navbar />}></Route>
         <Route path="/user" element={<UserSidebar />}>
         </Route>
-        <Route path="/addproduct" element={<AddProduct/>}></Route>
         {/* <Route path='/item' element={<AddItem/>}></Route> */}
         {/* <Route path="/deshboard" element={<Deshboard1 />}></Route> */}
       </Routes>
