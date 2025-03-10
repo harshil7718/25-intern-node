@@ -94,4 +94,3 @@ const sendingMail = async (to, subject, text) => {
 module.exports = {
   sendingMail,
 };
-//sendingMail("samir.vithlani83955@gmail.com","Test Mail","this is test mail")
