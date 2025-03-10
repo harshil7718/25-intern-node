@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 const productSchema = new mongoose.Schema(
   {
     
-    sellerId: {
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users", // Assuming User model exists
-      required: true
+      // required: true
     },
     productName: {
       type: String,
@@ -21,10 +21,10 @@ const productSchema = new mongoose.Schema(
       ref: "category", // Assuming Category model exists
       required: true
     },
-    // imageUrl: {
-    //   type: String, // Assuming a URL will be stored
-    //   required: true
-    // },
+    productURL: {
+      type: String, // Assuming a URL will be stored
+      // required: true
+    },
     startingPrice: {
       type: mongoose.Schema.Types.Decimal128, // For accurate price storage
       required: true

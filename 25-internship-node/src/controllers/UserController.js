@@ -1,6 +1,7 @@
 // const UserModel = require("../models/UserModel");
 const userModel = require("../models/UserModel")
 const bcrypt= require("bcryptjs")
+const mailUtil = require("../utils/MailUtil")
 const getUsers = async (req, res) => {
   
 
@@ -89,7 +90,7 @@ const signup = async (req, res) => {
             message: "User created successfully",
             data: createdUser,
         });
-
+        await mailUtil.sendingMail(createdUser.email,"welcome to eadvertisement","this is welcome mail")
     } catch (err) {
         console.error("Signup Error:", err);
         res.status(500).json({
