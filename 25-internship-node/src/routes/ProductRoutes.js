@@ -9,7 +9,7 @@ routes.post("/addwithfile",ProductController.addProductWithFile)
 routes.get("/all", ProductController.getProducts);
 
 // 📌 Get product by ID
-routes.get("/:productId", ProductController.getProductById);
+routes.get("/get/:productId", ProductController.getProductById);
 
 // 📌 Get products by category
 // routes.get("/category/:categoryId", ProductController.getProductsByCategory);

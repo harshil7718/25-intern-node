@@ -61,10 +61,10 @@ const UserSidebar = () => {
                     </Link>
                     <ul className="nav nav-treeview">
                       <li className="nav-item">
-                        <a className="nav-link" href="/dist/pages/">
-                          <i className="nav-icon bi bi-circle" />
-                          <p>Dashboard v1</p>
-                        </a>
+                        <Link to="/myproducts" className="nav-link active" >
+                          <i className="nav-icon bi bi-speedometer" />
+                          <p>View Ny Products</p>
+                        </Link>
                       </li>
                       <li className="nav-item">
                         <a className="nav-link" href="/dist/pages/index2">

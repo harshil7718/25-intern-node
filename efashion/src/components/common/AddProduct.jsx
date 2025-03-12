@@ -206,6 +206,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const [categories, setCategories] = useState([]);
@@ -247,47 +248,60 @@ const AddProduct = () => {
     getAllStates();
   }, []);
 
-  const { register, handleSubmit } = useForm();
-
+//   const { register, handleSubmit } = useForm();
+  
 //   const submitHandler = async (data) => {
-//     const sellerId = localStorage.getItem("id");
-//     data.sellerId = sellerId;
-// console.log(data);
+//   const sellerId = localStorage.getItem("id");
+//   data.sellerId = sellerId;
+//   console.log("Submitting Data:", data); // Log data before sending
 
-//     // const userData = [...data, sellerId]
+//   try {
+//     const res = await axios.post("/products/add", data);
+//     console.log("Response:", res.data);
+//     alert("Product added successfully!");
+//   } catch (err) {
+//     console.error("Server Error:", err.response?.data || err.message);
+//   }
+// };
 
-//     try {
-//       const res = await axios.post("/products/add", data);
-//       console.log("Product added:", res.data);
-//       alert("Product added successfully!");
-//       console.log(res.data);
-      
-//     } catch (err) {
-//       console.error("Error adding product:", err);
-//     }
-//   };
+
+const { register, handleSubmit } = useForm();
+const navigate = useNavigate()
 
 const submitHandler = async (data) => {
-  const sellerId = localStorage.getItem("id");
-  data.sellerId = sellerId;
-  console.log("Submitting Data:", data); // Log data before sending
+  data.userId = localStorage.getItem("id");
+  console.log(data);
+  console.log(data.image[0]) //array -->0th index access..
 
-  try {
-    const res = await axios.post("/products/add", data);
-    console.log("Response:", res.data);
-    alert("Product added successfully!");
-  } catch (err) {
-    console.error("Server Error:", err.response?.data || err.message);
-  }
+  const formData = new FormData();
+  formData.append("productName",data.productName);
+  formData.append("description",data.description);
+  formData.append("categoryId",data.categoryId);
+  formData.append("condition",data.condition);
+  formData.append("listingdate",data.listingdate);
+  formData.append("stateId",data.stateId);
+  formData.append("cityId",data.cityId);
+  formData.append("startingPrice",data.startingPrice);
+  formData.append("image",data.image[0]);
+  formData.append("userId",data.userId);
+  
+
+
+
+  //const res = await axios.post("/hording/add", data);
+  const res = await axios.post("/addwithfile", formData);
+  console.log(res); //axios
+  console.log(res.data); //api response
+  //if else...
+  navigate("/myproducts")
 };
-
 
 
 return (
     <div style={styles.background}>
       <div style={styles.card}>
         <h1 style={styles.title}>Add a New Product</h1>
-        <form onSubmit={handleSubmit(submitHandler)} style={styles.form}>
+        <form onSubmit={handleSubmit(submitHandler)} encType="multipart/form-data">
           {/* Category Dropdown */}
           <div style={styles.formGroup}>
             <label>Category Type</label>
@@ -357,6 +371,10 @@ return (
               ))}
             </select>
           </div>
+          <div style={styles.formGroup}>
+                <label>Select Product URL</label>
+                <input type="file" {...register("image")}></input>
+              </div>
 
           {/* Submit Button */}
           <div style={styles.formGroup}>

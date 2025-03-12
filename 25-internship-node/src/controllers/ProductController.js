@@ -92,7 +92,7 @@ const addProductWithFile = async (req, res) => {
 const getProducts = async (req, res) => {
   try {
     const products = await Product.find()
-      .populate("sellerId", "name email") // Populating seller details
+      .populate("userId", "name email") // Populating seller details
       .populate("categoryId", "categoryName") // Populating category name
       .populate("stateId cityId", "name"); // Populating location details
 
@@ -109,7 +109,7 @@ const getProducts = async (req, res) => {
 const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.productId)
-      .populate("sellerId", "name email")
+      .populate("userId", "name email")
       .populate("categoryId", "categoryName")
       .populate("stateId cityId", "name");
 

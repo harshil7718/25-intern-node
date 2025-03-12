@@ -16,12 +16,16 @@ import Home from "./components/common/Home.jsx";
 import ProductForm from "./components/common/AddProduct.jsx";
 import AddProduct from "./components/common/AddProduct.jsx";
 import PrivateRoutes from "./hooks/PrivateRoutes.jsx";
+import ViewMyProducts from "./components/common/ViewMyProducts.jsx";
 // import AddItem from "./components/layouts/AddItem.jsx";
 
 
 function App() {
 
   axios.defaults.baseURL="http://localhost:7777"
+
+  
+
   return (
       
     // <body className="layout-fixed sidebar-expand-lg bg-body-tertiary sidebar-open app-loaded">
@@ -35,6 +39,7 @@ function App() {
         <Route path=""  element={<PrivateRoutes/>}>
         </Route>
         <Route path="/addproduct" element={<AddProduct/>}></Route>
+        <Route path="/myproducts" element={<ViewMyProducts/>}></Route>
         <Route path="/nav" element={<Navbar />}></Route>
         <Route path="/user" element={<UserSidebar />}>
         </Route>
