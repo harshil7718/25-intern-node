@@ -17,6 +17,7 @@ import ProductForm from "./components/common/AddProduct.jsx";
 import AddProduct from "./components/common/AddProduct.jsx";
 import PrivateRoutes from "./hooks/PrivateRoutes.jsx";
 import ViewMyProducts from "./components/common/ViewMyProducts.jsx";
+import UpdateProduct from "./components/common/UpdateMyProducts.jsx";
 // import AddItem from "./components/layouts/AddItem.jsx";
 
 
@@ -40,6 +41,7 @@ function App() {
         </Route>
         <Route path="/addproduct" element={<AddProduct/>}></Route>
         <Route path="/myproducts" element={<ViewMyProducts/>}></Route>
+        <Route path="/updateproduct/:id" element={<UpdateProduct/>}></Route>
         <Route path="/nav" element={<Navbar />}></Route>
         <Route path="/user" element={<UserSidebar />}>
         </Route>

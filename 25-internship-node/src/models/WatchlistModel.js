@@ -1,10 +1,23 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
+// Watchlist Schema
 const watchlistSchema = new mongoose.Schema({
-  watchlistId: { type: String, unique: true, required: true },
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  auctionId: { type: mongoose.Schema.Types.ObjectId, ref: "Auction", required: true },
-  addedDate: { type: Date, default: Date.now },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',  // Reference to the User entity
+    required: true,
+  },
+  auctionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Auction',  // Reference to the Auction entity
+    required: true,
+  },
+  addedDate: {
+    type: Date,
+    default: Date.now,  // Automatically sets the current date
+  },
 });
 
-module.exports = mongoose.model("Watchlist", watchlistSchema);
+const Watchlist = mongoose.model('Watchlist', watchlistSchema);
+
+module.exports = Watchlist;

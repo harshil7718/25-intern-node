@@ -31,6 +31,18 @@ app.use(categoryRoutes)
 const productRoutes=require('./src/routes/ProductRoutes')
 app.use(productRoutes)
 
+const bidroutes=require("./src/routes/BidRoutes")
+app.use(bidroutes)
+
+const auctionRoutes=require('./src/routes/AuctionRoutes')
+app.use(auctionRoutes)
+
+const watchlistroutes=require('./src/routes/WatchlistRoutes')
+app.use(watchlistroutes)
+
+const reviewroutes=require("./src/routes/ReviewRoutes")
+app.use(reviewroutes)
+
 mongoose.connect("mongodb+srv://harshilp7718:SqNcKQASM4WQi1l9@cluster01.gsjaj.mongodb.net/xyz?retryWrites=true&w=majority&appName=Cluster01").then(()=>{
     console.log("database connected....")
 })
